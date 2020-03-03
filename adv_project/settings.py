@@ -14,7 +14,7 @@ import os
 from decouple import config
 import dj_database_url
 
-# NOTICE: Uncoment when deploying to heroku
+# NOTICE: Uncomment when deploying to Heroku
 #DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,7 +30,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS')
+# NOTICE: Comment out when deploying to Heroku
+ALLOWED_HOSTS=['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -156,5 +157,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 import django_heroku
 # ALLOWED_HOSTS gets overridden here by locals set in heroku
-# NOTICE: Uncoment when deploying to heroku
+# NOTICE: Uncomment when deploying to Heroku
 #django_heroku.settings(locals())
