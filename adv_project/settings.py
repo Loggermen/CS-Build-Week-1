@@ -156,4 +156,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 import django_heroku
 # ALLOWED_HOSTS gets overridden here by locals set in heroku
-django_heroku.settings(locals())
+# NOTICE: Uncoment when deploying to heroku
+#django_heroku.settings(locals())
