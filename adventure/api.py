@@ -20,7 +20,17 @@ def initialize(request):
     uuid = player.uuid
     room = player.room()
     players = room.playerNames(player_id)
-    return JsonResponse({'uuid': uuid, 'name':player.user.username, 'title':room.title, 'description':room.description, 'players':players}, safe=True)
+    return JsonResponse(
+        {'uuid': uuid, 'name': player.user.username, 'title': room.title, 'description': room.description,
+         'players': players}, safe=True)
+
+
+@csrf_exempt
+@api_view(['GET'])
+def rooms(request):
+    room_list = [room for room in Room.objects.values()]
+    player_position = request.user.player.currentRoom
+    return JsonResponse({'room_list': room_list, 'player_position': player_position}, safe=True)
 
 
 # @csrf_exempt
@@ -64,4 +74,4 @@ def move(request):
 @api_view(["POST"])
 def say(request):
     # IMPLEMENT
-    return JsonResponse({'error':"Not yet implemented"}, safe=True, status=500)
+    return JsonResponse({'error': "Not yet implemented"}, safe=True, status=500)
