@@ -168,15 +168,15 @@ Note that all the Pusher parts are stretch.
 
 Here's a sample project created by [a team in CSPT2](https://confident-wright-ca0176.netlify.com): 
 
-![Lambda MUD 1](img/pt2_lambdamud.png)
+![Lambda MUD 1](staticfiles/img/pt2_lambdamud.png)
 
 And here's [a FT team](https://lambdaschool.com/lab-demos/lambda-mud) that went above and beyond with their use of graphics:
 
-![Lambda MUD 2](img/ex_lambdamud.png)
+![Lambda MUD 2](staticfiles/img/ex_lambdamud.png)
 
 And here's an example on iOS:
 
-![Lambda MUD Mobile](img/ios_lambdamud.jpg)
+![Lambda MUD Mobile](staticfiles/img/ios_lambdamud.jpg)
 
 ### 2. How do I build something like that?
 
