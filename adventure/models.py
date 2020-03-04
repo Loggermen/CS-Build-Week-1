@@ -12,6 +12,8 @@ class Room(models.Model):
     s_to = models.IntegerField(default=0)
     e_to = models.IntegerField(default=0)
     w_to = models.IntegerField(default=0)
+    x = models.IntegerField(default=0)
+    y = models.IntegerField(default=0)
     def connectRooms(self, destinationRoom, direction):
         destinationRoomID = destinationRoom.id
         try:
@@ -19,13 +21,13 @@ class Room(models.Model):
         except Room.DoesNotExist:
             print("That room does not exist")
         else:
-            if direction == "n":
+            if direction == "north":
                 self.n_to = destinationRoomID
-            elif direction == "s":
+            elif direction == "south":
                 self.s_to = destinationRoomID
-            elif direction == "e":
+            elif direction == "east":
                 self.e_to = destinationRoomID
-            elif direction == "w":
+            elif direction == "west":
                 self.w_to = destinationRoomID
             else:
                 print("Invalid direction")

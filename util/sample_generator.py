@@ -4,7 +4,7 @@
 # You can modify generate_rooms() to create your own
 # procedural generation algorithm and use print_rooms()
 # to see the world.
-
+from strings import name_gen,description_gen
 
 class Room:
     def __init__(self, id, name, description, x, y):
@@ -80,7 +80,7 @@ class World:
                 direction *= -1
 
             # Create a room in the given direction
-            room = Room(room_count, "A Generic Room", "This is a generic room.", x, y)
+            room = Room(room_count, name_gen(), description_gen(), x, y)
             # Note that in Django, you'll need to save the room after you create it
 
             # Save the room in the World grid
