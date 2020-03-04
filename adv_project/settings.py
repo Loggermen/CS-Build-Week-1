@@ -14,9 +14,6 @@ import os
 from decouple import config
 import dj_database_url
 
-# NOTICE: Uncomment when deploying to Heroku
-#DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,8 +27,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-# NOTICE: Comment out when deploying to Heroku
-ALLOWED_HOSTS=['localhost', '127.0.0.1']
+# NOTICE: Comment out when deploying to Heroku ##################################
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -94,6 +91,7 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# NOTICE: Comment out when deploying to Heroku ##################################
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -101,6 +99,8 @@ DATABASES = {
     }
 }
 
+# NOTICE: Uncomment when deploying to Heroku ####################################
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -156,6 +156,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 import django_heroku
-# ALLOWED_HOSTS gets overridden here by locals set in heroku
-# NOTICE: Uncomment when deploying to Heroku
+# NOTICE: Uncomment when deploying to Heroku ####################################
 #django_heroku.settings(locals())
+
+# For local use
+# del DATABASES['default']['OPTIONS']['sslmode']
