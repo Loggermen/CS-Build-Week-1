@@ -23,13 +23,13 @@ class Room(models.Model):
         except Room.DoesNotExist:
             print("That room does not exist")
         else:
-            if direction == "north":
+            if direction == "n":
                 self.n_to = destinationRoomID
-            elif direction == "south":
+            elif direction == "s":
                 self.s_to = destinationRoomID
-            elif direction == "east":
+            elif direction == "e":
                 self.e_to = destinationRoomID
-            elif direction == "west":
+            elif direction == "w":
                 self.w_to = destinationRoomID
             else:
                 print("Invalid direction")
