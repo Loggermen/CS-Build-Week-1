@@ -1,12 +1,9 @@
+from adventure.models import Player, Room
+from util.strings import name_gen, description_gen
 import random
 
 
-from adventure.models import Player, Room
-from util.strings import name_gen, description_gen
-
-
 Room.objects.all().delete()
-
 
 
 class World:
@@ -14,10 +11,11 @@ class World:
         self.grid = ''
         self.width = 0
         self.height = 0
+
     def print_rooms(self):
-        '''
+        """
         Print the rooms in room_grid in ascii characters.
-        '''
+        """
         # Add top border
         str = "# " * ((3 + self.width * 5) // 2) + "\n"
         # The console prints top to bottom but our array is arranged
@@ -63,6 +61,7 @@ class World:
         str += "# " * ((3 + self.width * 5) // 2) + "\n"
         # Print string
         print(str)
+
     def generate_rooms(self, size_x, size_y, num_rooms):
         grid = [None] * size_y
         self.width = size_x
