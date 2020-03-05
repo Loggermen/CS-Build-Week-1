@@ -37,6 +37,20 @@ def rooms(request):
                         safe=True)
 
 
+@csrf_exempt
+@api_view(['GET'])
+def getRoomById(request, room_id):
+    room = Room.objects.get(id=room_id)
+    return JsonResponse({'title': room.title,
+                         'description': room.description,
+                         'n_to': room.n_to,
+                         's_to': room.s_to,
+                         'e_to': room.e_to,
+                         'w_to': room.w_to,
+                         'x': room.x,
+                         'y': room.y})
+
+
 # @csrf_exempt
 @api_view(["POST"])
 def move(request):
