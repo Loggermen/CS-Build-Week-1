@@ -20,14 +20,14 @@ for p in players:
 
 # DEBUGGING:
 # w.print_rooms()
-for room in Room.objects.all():
-    print(f"\
-    id: {room.id}\n\
-    title: {room.title}\n\
-    description: {room.description}\n\
-    n_to: {room.n_to}\n\
-    s_to: {room.s_to}\n\
-    e_to: {room.e_to}\n\
-    w_to: {room.w_to}\n\
-    x: {room.x}\n\
-    y: {room.y}\n\n")
+# for room in Room.objects.all():
+#     print(f"\
+#     id: {room.id}\n\
+#     title: {room.title}\n\
+#     description: {room.description}\n\
+#     n_to: {room.n_to}\n\
+#     s_to: {room.s_to}\n\
+#     e_to: {room.e_to}\n\
+#     w_to: {room.w_to}\n\
+#     x: {room.x}\n\
+#     y: {room.y}\n\n")
