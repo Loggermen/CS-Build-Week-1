@@ -29,8 +29,12 @@ def initialize(request):
 @api_view(['GET'])
 def rooms(request):
     room_list = [room for room in Room.objects.values()]
-    player_position = request.user.player.currentRoom
-    return JsonResponse({'room_list': room_list, 'player_position': player_position}, safe=True)
+    player_x_pos = request.user.player.room().x
+    player_y_pos = request.user.player.room().y
+    return JsonResponse({'room_list': room_list,
+                         'player_x_pos': player_x_pos,
+                         'player_y_pos': player_y_pos},
+                        safe=True)
 
 
 # @csrf_exempt
