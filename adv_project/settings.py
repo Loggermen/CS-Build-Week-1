@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-from decouple import config
+import django_heroku
 import dj_database_url
+from decouple import config
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +29,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'lumbwars.herokuapp.com']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Application definition
@@ -113,8 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
-
 REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
@@ -150,9 +150,10 @@ STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles/img')]
 
-import django_heroku
-# NOTICE: Uncomment when deploying to Heroku ####################################
 django_heroku.settings(locals())
 
-# For local use
-# del DATABASES['default']['OPTIONS']['sslmode']
+# Add to your .env file the following for local use:
+# ALLOWED_HOSTS=localhost,127.0.0.1
+
+if "localhost" in ALLOWED_HOSTS or "127.0.0.1" in ALLOWED_HOSTS:
+    del DATABASES['default']['OPTIONS']['sslmode']
