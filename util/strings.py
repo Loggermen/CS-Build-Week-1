@@ -17,11 +17,10 @@ latin_verbs = ['amat','vocat','elegit','juvat','defendit']
 latin_objects = ['me','nos','amantes','fideles','fortis','sapientes']
 
 
-
-
 def name_gen():
-    room_name = ' '.join(sample(prefixes, k=1) + sample(suffixes, k=1))
-    return room_name.title
+    room_name = sample(prefixes, k=1) + sample(suffixes, k=1)
+    return ' '.join(room_name).title()
+
 
 def description_gen():
     description_1 = sample(latin_nouns, k=1) + sample(latin_nouns, k=1)
